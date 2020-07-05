@@ -256,7 +256,7 @@ def kernel_pm(M, m= 20, n_vec=100, device="cuda:0", power_it=100):
 	del vk
 	del vk1
 	M = M.to("cpu")
-	torch.cuda.empty_cache()
+	torch.cuda.empty_cache() #This line of code doesn't seem to work when nested inside a function.
 	print("Finished top eigenvalue, computing mu")
 
 	# We want to rescale M = (M - ((b + a)/2)*I)/((b-a)/2). M needs to be rescaled for Chebyshev basis
@@ -304,6 +304,6 @@ def kernel_pm(M, m= 20, n_vec=100, device="cuda:0", power_it=100):
 			mu[k] = 1/(n*math.pi)*zeta[k]
 		else:
 			mu[k] = 2/(n*math.pi)*zeta[k]
-	return mu
+	return mu.detach().cpu().numpy()
 
 #
