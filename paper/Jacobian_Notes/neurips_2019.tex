@@ -51,6 +51,7 @@
 \newcommand{\dfz}{\frac{\partial f}{\partial z}}
 \newcommand{\det}{\text{det}}
 \newcommand{\Cov}{\mathrm{Cov}}
+\newcommand {\nred}[1]{{\color{red}\sf{[#1]}}}
 
 
 
@@ -156,6 +157,17 @@
 \begin{abstract}
 \end{abstract}
 
+\section{Introduction}
+
+There has been past work on showing that the smoothness of the Hessian of the loss function as a function of the weights of the final trained model is correlated with good generalization \cite{sagun2017empirical, chaudhari2019entropy}. Recently, there has been work on leveraging stochastic methods for the computation of the empirical spectral density of the Hessian \cite{ghorbani2019investigation, yao2019pyhessian}, and further studies of the spectrum of the Hessian have brought some contention to this claim \cite{goldblum2019truth, maddox2020rethinking, granziol2020flatness}. 
+
+\cite{ghorbani2019investigation, goldblum2019truth, maddox2020rethinking, chaudhari2019entropy, sagun2017empirical, granziol2020flatness, yao2019pyhessian}
+
+The Jacobian of the neural network, or the derivative of the neural network function with respect to either the data (input/output map) or the weights, has also been studied extensively, covering a wide range of topics, such as it's initialization \cite{pennington2017resurrecting, pennington2018emergence}, as a measure of generalization \cite{sokolic2017robust, novak2018sensitivity, jiang2018predicting, oymak2019generalization, oymak2019generalization, sanyal2019stable} as a way to regularize the network \cite{bagge2018tangent, hoffman2019robust}, it's spectrum \cite{pennington2017resurrecting, pennington2018emergence, ling2019spectrum, zhang2019one, tarnowski2019dynamical, wang2016analysis}, as a learning objective itself \cite{lorrainejacnet}, as a measure of robustness \cite{yu2018interpreting}, as well as it's connections to information geometry \cite{sokol2018information}.
+
+
+\cite{sokolic2017robust, pennington2017resurrecting, novak2018sensitivity, pennington2018emergence, bagge2018tangent, ling2019spectrum, jiang2018predicting, yu2018interpreting, hoffman2019robust, oymak2019generalization, sokol2018information, lorrainejacnet, oymak2019generalization, zhang2019one, sanyal2019stable, tarnowski2019dynamical, wang2016analysis}
+
 \section{Computing the Jacobian}
 
 Suppose we have a Neural Network classifier $f : \R^{d} \rightarrow \R^{k}$, where $d$ is the dimensionality of the input and $k$ is the number of classes. We define the Jacobian matrix of the Neural Network as:
@@ -202,7 +214,7 @@ testing
 
 
 \bibliographystyle{unsrt}
-\bibliography{sample.bib}
+\bibliography{main.bib}
 
 
 
