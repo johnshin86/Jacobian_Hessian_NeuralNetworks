@@ -277,7 +277,12 @@ def kernel_pm(M, m= 20, n_vec=100, device="cuda:0", power_it=100):
 	b = vk @ M @ vk
 	del vk
 	del vk1
+	
+	
+	# The following segment of code was written for M of size 50k x 50k (the training set of CIFAR10), which just fit on a P100. 
+	# For the test set Jacobian (10k x 10k) it is not optimal.
 	M = M.to("cpu")
+	b = b.to("cpu")
 	torch.cuda.empty_cache() #This line of code doesn't seem to work when nested inside a function.
 	print("Finished top eigenvalue, computing mu")
 
@@ -295,7 +300,7 @@ def kernel_pm(M, m= 20, n_vec=100, device="cuda:0", power_it=100):
 	mu = torch.zeros(m, device = device)
 
 	for l in range(n_vec): #number of vecs
-		print("Iteration {} of computing mu".format(l))
+		#print("Iteration {} of computing mu".format(l))
 		v0 = torch.empty(n, device=device).normal_(mean=0, std=1.)
 		for k in range(m): #cheby degree
 			if k == 0:
